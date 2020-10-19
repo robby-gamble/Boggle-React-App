@@ -2,21 +2,24 @@ import React from 'react';
 import './SummaryResults.css';
 
 
-function SummaryResults() {
+function SummaryResults({ words, totalTime}) {
 
-    return (
-     <div className="Summary">
-        <h2>SUMMARY</h2>     
-         <div>
-          <li>Total Words Found: 12</li> 
-         </div>
+  return (
+    <div className="Found-solutions-list">
+      <h2>SUMMARY</h2>
+     
+       <div>
+        <li key="12">Total Words Found: {words.length}</li>
         
+       </div>
+      
          <div>
-          <li>Total Time: 3.25 secs</li>
-         </div>    
-     </div>
-    );
-  }
+        <li key="15">Total Time: {totalTime} secs</li>
+        
+       </div>    
+    </div>
+  );
+}
   
   export default SummaryResults;
   

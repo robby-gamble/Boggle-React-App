@@ -1,18 +1,18 @@
 import React from 'react';
 import './FoundSolutions.css';
 
-function FoundSolutions() {
+function FoundSolutions({ words, headerText}) {
 
-  return (
-    <div className="Found-solutions-list">
-      <h4>Missed Words:</h4>
-
-      <ul>
-           <li> word1 </li>
-           <li> word2 </li>
-      </ul>
-   </div>
-  );
-};
-
+    return (
+      <div className="Found-solutions-list">
+      
+        {words.length > 0 &&
+          <h4>{headerText}: {words.length}</h4>
+        }
+        <ul>
+          {words.map((solution) => {return <li key={solution}>{solution}</li>})}
+        </ul>
+      </div>
+    );
+  }
 export default FoundSolutions;

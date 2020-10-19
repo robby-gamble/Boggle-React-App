@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { GAME_STATE } from './GameState.js';
-import { RandomGrid } from './randomGen.js';
-import findAllSolutions from 'boggle-solver/src/componenets/jsFiles/solver.js';
-import Board from './componenets/jsFiles/Board.js';
-import GuessInput from '.boggle-solver/src/componenets/jsFiles/GuessInput.js';
+import { GAME_STATE } from './boggle-solver/src/componenets/jsFiles/GameState.js';
+import { RandomGrid } from './boggle-solver/src/componenets/jsFiles/randomGen.js';
+import findAllSolutions from './boggle-solver/src/componenets/jsFiles/solver.js';
+import Board from './boggle-solver/src/componenets/jsFiles/Board.js';
+import GuessInput from './boggle-solver/src/componenets/jsFiles/GuessInput.js';
 import FoundSolutions from './boggle-solver/src/componenets/jsFiles/FoundSolutions.js'
-import SummaryResults from '.boggle-solver/src/componenets/jsFiles/SummaryResults.js';
-import ToggleState from 'boggle-solver/src/componenets/jsFiles/ToggleState.js';
-import logo from '.boggle-solver/src/images/boggle.png';
+import SummaryResults from './boggle-solver/src/componenets/jsFiles/SummaryResults.js';
+import ToggleState from './boggle-solver/src/componenets/jsFiles/ToggleState.js';
+import logo from './boggle-solver/src/images/boggle.png';
 import './App.css';
 
 
 // useEffect will trigger when the array items in the second argument are
 // updated so whenever grid is updated, we will recompute the solutions
 useEffect(() => {
-  const wordList = require('./full-wordlist.json');
+  const wordList = require('./boggle-solver/src/full-wordlist.json');
   let tmpAllSolutions = findAllSolutions(grid, wordList.words);
   setAllSolutions(tmpAllSolutions);
+  console.log("I'm in use effect 1.");
 }, [grid]);
 
 // This will run when gameState changes.
@@ -25,6 +26,7 @@ useEffect(() => {
   if (gameState === GAME_STATE.IN_PROGRESS) {
     setGrid(RandomGrid(size));
     setFoundSolutions([]);
+    console.log("I'm in use effect 1.");
   }
 }, [gameState, size]);
 
